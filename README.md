@@ -7,7 +7,6 @@ Welcome to the project repository for the presentation "Automating The Mundane w
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Getting Started](#getting-started)
 - [Folder Structure](#folder-structure)
 - [Case Studies](#case-studies)
 - [Additional Resources](#additional-resources)
@@ -24,6 +23,7 @@ The following is the recommended folder structure for this repository. Create th
 ```
 mitechcon-automation/
 ├── README.md
+├── Automating The Mundane with n8n and Generative AI.pdf
 └── workflows/
    ├── Email_Manager.json
    ├── Sales_Meeting_Coaching_Report.json
@@ -42,7 +42,7 @@ The following case studies demonstrate practical applications of n8n and Generat
    - **Auto Draft Response**: Use AI to draft a response email based on context.
    - **Determine Article Relevance**: Analyze articles and prioritize them based on relevance.
 
-2. **Lead Generation**
+2. **Sales Meeting Coaching Insights**
    - Explore workflows designed for automating lead generation and nurturing.
 
 ## Additional Resources
