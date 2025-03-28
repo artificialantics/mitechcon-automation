@@ -23,22 +23,12 @@ The following is the recommended folder structure for this repository. Create th
 
 ```
 mitechcon-automation/
-│
-├── workflows/
-│   ├── Email_Manager.json
-│   ├── Sales_Meeting_Coaching_Report.json
-│   └── Web_Researcher_for_Sales.json
-│
-├── templates/
-│   └── n8n_templates.md
-│
-├── images/
-│   └── {Add in helpful image demonstrating X}
-│
-├── videos/
-│   └── getting_started_video.mp4
-│
-└── README.md
+├── README.md
+└── workflows/
+   ├── Email_Manager.json
+   ├── Sales_Meeting_Coaching_Report.json
+   └── Web_Researcher_for_Sales.json
+
 ```
 
 ## Case Studies
