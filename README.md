@@ -17,22 +17,6 @@ Welcome to the project repository for the presentation "Automating The Mundane w
 
 In this presentation, we explore how to leverage automation tools like n8n in combination with Generative AI to streamline mundane tasks. The goal is to demonstrate practical use cases that can simplify work processes, enhance productivity, and improve efficiency.
 
-## Getting Started
-
-Follow these steps to get started with n8n and the provided case studies:
-
-1. **Clone the repository**:
-   ```
-   git clone https://github.com/artificialantics/mitechcon-automation.git
-   cd mitechcon-automation
-   ```
-
-2. **Install n8n**:
-   For more information about installing n8n, visit [n8n.io](https://n8n.io).
-
-3. **Explore the workflows**:
-   Navigate to the workflows directory to see various examples and templates.
-
 ## Folder Structure
 
 The following is the recommended folder structure for this repository. Create these folders and files to effectively organize your content.
@@ -41,16 +25,9 @@ The following is the recommended folder structure for this repository. Create th
 mitechcon-automation/
 │
 ├── workflows/
-│   ├── email_management/
-│   │   ├── categorization_and_routing.json
-│   │   ├── create_and_email_dossier.json
-│   │   ├── create_trello_card.json
-│   │   ├── auto_draft_response.json
-│   │   └── determine_article_relevance.json
-│   ├── lead_generation/
-│   │   └── lead_generation_workflow.json
-│   └── documentation/
-│       └── workflow_overview.md
+│   ├── Email_Manager.json
+│   ├── Sales_Meeting_Coaching_Report.json
+│   └── Web_Researcher_for_Sales.json
 │
 ├── templates/
 │   └── n8n_templates.md

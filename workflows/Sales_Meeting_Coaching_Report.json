@@ -1,0 +1,263 @@
+{
+  "name": "AI Sales Meeting Coaching Report - Open AI, Hubspot, Trello and Slack",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        0
+      ],
+      "id": "fb8d5985-63cf-4b81-ba0d-877307b80319",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "# Liberty Auto Group – Discovery Demo Meeting\n\n**Date:** Mon, Mar 17, 2025, 11:00 AM CST\n\n**0:00 – John Miller (johnmiller@velocitycomms.com):**  \nGood morning, everyone. Thanks for joining our call today.\n\n**0:03 – [On-Hold Participant]:**  \nHello, John!\n\n**0:05 – John Miller (johnmiller@velocitycomms.com):**  \nI’m John Miller from Velocity Communications. With me are Lisa Thompson (lisathompson@velocitycomms.com) and Sarah Johnson (sarahjohnson@velocitycomms.com) from our automotive solutions team, along with our customer success manager, David Clark (davidclark@velocitycomms.com). Welcome to everyone from Liberty Auto Group!\n\n**0:15 – Robert Williams (robertwilliams@libertyautogroup.com) – Liberty Auto Group:**  \nGood morning, John. We’re excited to see what you have to show us.\n\n**0:20 – John Miller (johnmiller@velocitycomms.com):**  \nGreat. We understand your team’s been facing issues with call transfers, long wait times, and the complexity of setup. You’re also looking to consolidate vendors and streamline operations. Does that sound right?\n\n**0:30 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nExactly. We need a system that’s simple for our team and integrates well with our CRM and DMS.\n\n**0:40 – John Miller (johnmiller@velocitycomms.com):**  \nPerfect. Before we dive into the demo, any specific features you’d like us to focus on?\n\n**0:45 – James Brown (jamesbrown@libertyautogroup.com) – Liberty Auto Group:**  \nWe’d love an overview from the user side—how easy it is to answer calls and manage voicemails—while keeping admin functions light.\n\n**0:55 – John Miller (johnmiller@velocitycomms.com):**  \nUnderstood. Sarah, please take it from here.\n\n**1:00 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nThanks, John. Hi everyone—thanks for joining. I’m sharing my screen now. Here’s the main dashboard where active inbound calls appear. In a live environment, incoming calls populate this screen so you can answer, listen in, or even whisper for coaching.\n\n**1:15 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nFor example, when a call comes in, you’ll see a “Listen” button. You can monitor the conversation discreetly. Of course, we ensure compliance by including a notice that calls may be monitored for quality.\n\n**1:30 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nSwitching over, here’s the user management section. If an employee needs to update their email or other details, it’s as simple as clicking their name, making the change, and saving. Our support team—led by David Clark—is on hand during onboarding to assist with these adjustments.\n\n**1:45 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nQuick question: For a salesperson receiving a voicemail notification, do they need to check a separate email, or is it accessible directly on the phone?\n\n**1:48 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nGreat question, Lisa. At their desk, a salesperson can simply press the voicemail button on their phone. They’ll also receive an email with the audio file and transcription. If they’re away, our mobile app offers easy access to voicemails on the go.\n\n**2:00 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nNow, let me show the Webphone interface. By clicking “Apps” in the upper right, you select the Webphone option. This lightweight client provides full functionality—call history, voicemail access, and a dial pad—while you can have your CRM open in another window.\n\n**2:15 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nThat looks user-friendly. One concern: our team is very accustomed to traditional desk phones. Will this force everyone to switch to softphones?\n\n**2:20 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nNot at all. The softphone is an option for flexibility and remote work. Most staff can continue using their desk phones. We ensure that regardless of device—desk, mobile, or web—the system works seamlessly.\n\n**2:30 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nMoving on to call routing: our system offers features like auto attendant and call queues. If calls aren’t answered, they’re automatically rerouted to an escalation queue where supervisors can pick them up promptly.\n\n**2:45 – James Brown (jamesbrown@libertyautogroup.com):**  \nSo if a call isn’t answered immediately, the system can trigger a callback instead of keeping the customer waiting?\n\n**2:48 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nExactly. The queue callback feature lets customers hang up yet keep their place in line. An available agent then calls back, ensuring no leads are lost.\n\n**3:00 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nRegarding integrations, we offer native connections with popular CRMs and DMS systems. Your call activity—time, numbers, recordings—syncs directly into your CRM without needing third-party middleware.\n\n**3:15 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nThat’s impressive. It sounds far more seamless than patchwork solutions we’ve seen.\n\n**3:20 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nIt is, and that’s one of our key differentiators. Plus, our agile development team can quickly incorporate new integration features based on client feedback.\n\n**3:30 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nAnother highlight is our Clarity Cellular solution. It lets your sales team use their personal devices without mixing personal and business calls. Calls on a business SIM route through our system and are recorded, while personal calls remain private.\n\n**3:45 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nSo the system clearly distinguishes business from personal calls?\n\n**3:48 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nCorrect. A small icon indicates whether a call is via the business or personal line, ensuring clear separation of data.\n\n**3:55 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nBefore we move on, let me touch on reporting. Our dashboard offers real-time call stats and detailed agent performance reports. You can drill down by day, department, or even individual call durations, and set up automated email reports.\n\n**4:10 – James Brown (jamesbrown@libertyautogroup.com):**  \nThat will really help our managers track performance without manual compilation.\n\n**4:15 – John Miller (johnmiller@velocitycomms.com):**  \nExactly. Also, our API lets you pull call data into your own analytics tools for deeper insights.\n\n**4:25 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nOne more thing: can you discuss options for hardware? We currently use Cisco IP phones and want to know if we can continue or need to switch.\n\n**4:30 – John Miller (johnmiller@velocitycomms.com):**  \nOur system supports top devices like Poly and Yealink. Whether you lease or purchase, we can structure a solution that fits your budget and operational needs.\n\n**4:40 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nWe’re estimating around 30 users—including our BDC team—so we’ll need both the software and the phones.\n\n**4:45 – John Miller (johnmiller@velocitycomms.com):**  \nUnderstood. We’ll follow up with detailed pricing and options. Let’s plan to reconnect on Thursday for budgetary pricing.\n\n**4:50 – James Brown (jamesbrown@libertyautogroup.com):**  \nThursday works for us. Please send over some time options.\n\n**4:53 – John Miller (johnmiller@velocitycomms.com):**  \nGreat. Thank you all for your time today and for the engaging discussion.\n\n**4:57 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nThanks, everyone. We appreciate the opportunity to show you how Velocity Communications can streamline your communications at Liberty Auto Group.\n\n*—[Transition to Extended Discussion]—*\n\n**5:00 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nLet me dive deeper into our integration capabilities. Our native connection with CRMs like ELEAD and your DMS ensures real-time data flow and reduces manual entry. In fact, some teams have seen call follow-up times drop by nearly 30%.\n\n**5:30 – John Miller (johnmiller@velocitycomms.com):**  \nRegarding reliability, our system is built with redundancy. In the unlikely event of an outage, our failover systems activate immediately to keep calls flowing—minimizing any impact on your business.\n\n**6:00 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nThat’s reassuring. Can you elaborate on how failover works, especially when agents use the mobile app during peak hours?\n\n**6:05 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nWe use cloud-based routing; if your local network has issues, calls are automatically switched to our cloud servers. This way, mobile users experience uninterrupted service.\n\n**6:20 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nWhat about data security? We handle sensitive customer information daily.\n\n**6:25 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur solution uses enterprise-grade encryption for data in transit and at rest, and complies with standards like HIPAA and PCI-DSS—ensuring your customer data stays secure.\n\n**6:45 – James Brown (jamesbrown@libertyautogroup.com):**  \nHow do you handle reporting? I need detailed analytics on call durations, wait times, and agent performance.\n\n**6:50 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur dashboard offers real-time analytics, custom reports, and automated email reports. You can drill down into metrics like call duration, wait times, and conversion rates.\n\n**7:10 – John Miller (johnmiller@velocitycomms.com):**  \nPlus, our API allows you to integrate this call data with your existing analytics tools for even deeper insights.\n\n**7:20 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nI’d like to ask about customization. Our operations have unique processes. How adaptable is the system?\n\n**7:25 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur system is highly configurable. You can set custom call routing rules, personalized greetings for the IVR, and specific integration points. During onboarding, we work closely with your IT team to tailor the solution.\n\n**7:45 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nAnd what about future updates? We need assurance the system will evolve with our needs.\n\n**7:50 – John Miller (johnmiller@velocitycomms.com):**  \nOur agile development team releases regular updates. Client feedback is a major driver for our roadmap, so feature requests are often prioritized.\n\n**8:05 – James Brown (jamesbrown@libertyautogroup.com):**  \nCould you share an example of a recent update that made a big difference?\n\n**8:10 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nWe recently rolled out an enhanced call queue analytics feature that breaks down transfers, wait times, and callback rates. One client improved call handling efficiency by 20% after adopting these insights.\n\n**8:30 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nHow is support structured? Past experiences have shown that good support is critical.\n\n**8:35 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur support is tiered. Level one covers day-to-day issues, while tier two handles in-depth technical support. David Clark is your dedicated contact to escalate any issues.\n\n**8:45 – David Clark (davidclark@velocitycomms.com):**  \nI’ll be in regular touch to ensure a smooth onboarding and address any technical questions.\n\n**9:00 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nWhat training do you provide to get our team up to speed?\n\n**9:05 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nWe offer comprehensive training—online and on-site—with sessions tailored to different roles. Detailed documentation and video tutorials are also provided, and most teams are fully trained within a week.\n\n**9:20 – John Miller (johnmiller@velocitycomms.com):**  \nAnd our training continues with follow-up Q&A webinars, ensuring everyone stays comfortable with the system.\n\n**9:35 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nScalability is key. As we grow, can the system handle increased call volumes and additional users?\n\n**9:40 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur cloud-based architecture scales dynamically to handle extra load, whether you’re expanding departments or experiencing seasonal spikes.\n\n**9:55 – James Brown (jamesbrown@libertyautogroup.com):**  \nWhat about transitioning from our current system? How long does that usually take?\n\n**10:00 – John Miller (johnmiller@velocitycomms.com):**  \nTypically, onboarding takes 4–6 weeks, including data migration, configuration, and training. We also offer a pilot phase to test the system with a small group before full rollout.\n\n**10:15 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nThis pilot helps ensure the system meets your expectations before you fully commit.\n\n**10:30 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nAnd regarding pricing—can you offer flexibility, considering our budget constraints?\n\n**10:35 – John Miller (johnmiller@velocitycomms.com):**  \nOur pricing is tiered based on user count and features. We also provide options to lease or purchase hardware. We’ll send a detailed proposal after this call.\n\n**10:50 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nThe one-year contract term gives us the flexibility we need, too.\n\n**11:00 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nExactly. The shorter term reflects our confidence and lets you reassess periodically.\n\n**11:10 – James Brown (jamesbrown@libertyautogroup.com):**  \nLet’s talk about customization. Our routing rules differ for service versus sales. How granular can configurations be?\n\n**11:15 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur system supports very granular settings—custom rules based on time of day, call volume, and call type. For example, service calls can be directed to a dedicated team, while sales calls trigger a callback if unanswered promptly.\n\n**11:30 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nThat’s exactly what we need. Can the system integrate with our marketing tools to track promotional call performance?\n\n**11:35 – John Miller (johnmiller@velocitycomms.com):**  \nYes. Our API lets you pull call data into your marketing analytics so you can monitor campaign performance in real time.\n\n**11:45 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nWhat about the mobile experience? Our field agents rely on their smartphones heavily.\n\n**11:50 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur mobile app mirrors the desktop experience, including call handling, voicemail access, and internal chat. It’s optimized for both iOS and Android.\n\n**12:05 – James Brown (jamesbrown@libertyautogroup.com):**  \nDo you provide insights into call quality? VoIP can sometimes suffer from issues like jitter or latency.\n\n**12:10 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur system continuously monitors call quality—tracking metrics like jitter, latency, and packet loss—and displays them in your dashboard. If issues arise, our support team intervenes immediately.\n\n**12:25 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nHow are updates handled? Is there downtime during maintenance?\n\n**12:30 – John Miller (johnmiller@velocitycomms.com):**  \nWe schedule updates during off-peak hours, and our redundant design ensures there’s no noticeable downtime. We notify you in advance of any planned maintenance.\n\n**12:45 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nThat covers a lot. How do you incorporate customer feedback into your product development?\n\n**12:50 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nWe hold regular review sessions with clients and use surveys to gather feedback. This input directly influences our product roadmap so that new features meet real customer needs.\n\n**13:05 – James Brown (jamesbrown@libertyautogroup.com):**  \nAnd how does your support scale as your client base grows?\n\n**13:10 – David Clark (davidclark@velocitycomms.com):**  \nOur support team expands alongside our client base. We invest in ongoing training to ensure rapid response and knowledgeable assistance.\n\n**13:25 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nWe’ve covered many details. I do have follow-up questions on integration specifics, but we can dive into that during our next meeting.\n\n**13:30 – John Miller (johnmiller@velocitycomms.com):**  \nThat works. We’ll prepare documentation on integrations for our next session.\n\n**13:35 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nBefore wrapping up this segment, could you share a customer success story that highlights your solution’s impact?\n\n**13:40 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nA large regional dealership reduced call wait times by 25% and increased service appointment conversions by 15% within three months of implementing our system. We can send you the full case study later.\n\n**13:55 – James Brown (jamesbrown@libertyautogroup.com):**  \nThat’s impressive. I’d like to review that case study.\n\n**14:00 – John Miller (johnmiller@velocitycomms.com):**  \nWe’ll email it along with pricing details and integration docs.\n\n**14:05 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nIt would also be helpful to have our technical team join the next meeting to explore the API further.\n\n**14:10 – John Miller (johnmiller@velocitycomms.com):**  \nLet’s schedule a technical deep dive with your IT team next Thursday.\n\n**14:15 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nI’ll coordinate with our team and send a list of technical questions in advance.\n\n**14:20 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nExcellent. Now, let’s discuss our customizable IVR. You can set personalized greetings and menus based on time or campaign, all via an intuitive web interface.\n\n**14:35 – James Brown (jamesbrown@libertyautogroup.com):**  \nThat IVR customization could be a game-changer, especially for seasonal promotions.\n\n**14:40 – John Miller (johnmiller@velocitycomms.com):**  \nPersonalized IVR settings let you direct calls to specialized teams, promote specific services, and record targeted messages to enhance the caller experience.\n\n**14:50 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nRegarding call queue management—how do you ensure that calls are handled promptly during peak times?\n\n**14:55 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur call queue uses intelligent algorithms to prioritize calls based on wait time, call type, and agent availability. If wait times exceed thresholds, the callback feature is automatically triggered.\n\n**15:10 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nThat proactive approach really helps keep customers engaged.\n\n**15:15 – John Miller (johnmiller@velocitycomms.com):**  \nThis feature not only boosts customer satisfaction but also improves conversion rates.\n\n**15:20 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur system also offers robust analytics to monitor historical call data, helping you optimize staffing during peak periods.\n\n**15:35 – James Brown (jamesbrown@libertyautogroup.com):**  \nDoes the dashboard provide alerts if metrics fall below set thresholds?\n\n**15:40 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nYes, you can configure alerts for issues like high abandonment rates or long wait times, sent directly to your managers via email or SMS.\n\n**15:50 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nThat proactive monitoring is exactly what we need.\n\n**15:55 – John Miller (johnmiller@velocitycomms.com):**  \nWe’ve covered most key features. Any final questions before we break?\n\n**16:00 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nNo further questions from me.\n\n**16:05 – James Brown (jamesbrown@libertyautogroup.com):**  \nI’m good too. I’ll follow up with our technical team on the API details.\n\n**16:10 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nThanks for the thorough demo.\n\n**16:15 – John Miller (johnmiller@velocitycomms.com):**  \nGreat. Let’s take a brief break while I recap our main points and outline next steps.\n\n**16:25 – John Miller (johnmiller@velocitycomms.com):**  \nTo recap: we’ve discussed integrations, mobile and desktop functionalities, security, reporting, IVR customization, and support structures. Our next steps include sending a detailed proposal, pricing, and scheduling a technical session next Thursday.\n\n**16:35 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nWe appreciate your time today and look forward to ensuring a smooth transition for Liberty Auto Group.\n\n**16:45 – David Clark (davidclark@velocitycomms.com):**  \nI’ll follow up with an email summarizing our discussion and attach the relevant documents.\n\n**16:50 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nThank you. This session has been very productive.\n\n**16:55 – James Brown (jamesbrown@libertyautogroup.com):**  \nAgreed. Looking forward to our next meeting.\n\n**17:00 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nThanks, everyone.\n\n**17:05 – John Miller (johnmiller@velocitycomms.com):**  \nLet’s now reopen the floor for any additional questions or comments.\n\n**17:15 – John Miller (johnmiller@velocitycomms.com):**  \nWelcome back. Any more questions or comments?\n\n**17:20 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nI’d like to clarify scalability. If we face a surge during promotions, what’s the maximum capacity your system can handle?\n\n**17:25 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nOur cloud infrastructure can support thousands of simultaneous calls. In tests, we’ve handled up to 5,000 concurrent sessions without performance drops.\n\n**17:35 – James Brown (jamesbrown@libertyautogroup.com):**  \nThat’s impressive. How does the system handle international calls? We sometimes deal with foreign suppliers.\n\n**17:40 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nInternational calls are managed via our global carrier partnerships. They’re integrated into the same system, ensuring high quality and competitive rates.\n\n**17:50 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nWhat about disaster recovery? How quickly can services be restored during an outage?\n\n**17:55 – John Miller (johnmiller@velocitycomms.com):**  \nWe have geographically distributed data centers. In the event of an outage, failover processes activate within seconds to minutes, ensuring minimal disruption.\n\n**18:05 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nCan you explain how easily new users can be added mid-contract?\n\n**18:10 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nAdding users is very straightforward. It can be done via the admin portal or API, and new users are automatically provisioned with default settings.\n\n**18:20 – James Brown (jamesbrown@libertyautogroup.com):**  \nIs there any limit on the number of call recordings or extensions?\n\n**18:25 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nNo limits. Every call is recorded and stored securely, accessible via the portal or API for as long as you require.\n\n**18:35 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nHow do you handle data migration from an old system?\n\n**18:40 – John Miller (johnmiller@velocitycomms.com):**  \nOur team works closely with your IT department to migrate call logs, user data, and configuration settings with minimal downtime.\n\n**18:50 – David Clark (davidclark@velocitycomms.com):**  \nI’ll coordinate with your team to develop a detailed migration plan.\n\n**19:00 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nWhat about updates and feature rollouts? Can we control the timing?\n\n**19:05 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nUpdates occur during off-peak hours with our redundant system ensuring no downtime. Major updates are communicated well in advance, with training provided as needed.\n\n**19:15 – James Brown (jamesbrown@libertyautogroup.com):**  \nAnd what SLAs do you offer for support response and issue resolution?\n\n**19:20 – John Miller (johnmiller@velocitycomms.com):**  \nOur SLA guarantees a response within one hour for critical issues, with most issues resolved within 24 hours. Enhanced support packages are available for enterprise clients.\n\n**19:30 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nThank you—that’s very reassuring.\n\n**19:35 – David Clark (davidclark@velocitycomms.com):**  \nI’ll include a full breakdown of our SLAs in the follow-up email.\n\n**19:40 – John Miller (johnmiller@velocitycomms.com):**  \nBefore we close this segment, any final technical questions?\n\n**19:45 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nI’m satisfied. We’ll review the materials and get back to you if anything comes up.\n\n**19:50 – James Brown (jamesbrown@libertyautogroup.com):**  \nI’m on board too. Thanks for the detailed responses.\n\n**20:00 – John Miller (johnmiller@velocitycomms.com):**  \nGreat. Let’s now take a few minutes for an informal recap and discussion of next steps.\n\n**20:05 – John Miller (johnmiller@velocitycomms.com):**  \nTo summarize, we’ve discussed system integrations, security, reporting, customizable IVR, scalability, support, and more. Our next steps are to send detailed proposals, pricing, integration docs, and schedule a technical session with your IT team next Thursday.\n\n**20:15 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nWe’re excited about the opportunity to work with Liberty Auto Group and confident our solution will improve your call handling and overall efficiency.\n\n**20:20 – David Clark (davidclark@velocitycomms.com):**  \nI’ll send out a follow-up email summarizing today’s discussion along with all supporting documents.\n\n**20:25 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nThank you, everyone. This session has been extremely informative.\n\n**20:30 – John Miller (johnmiller@velocitycomms.com):**  \nBefore we wrap up, let’s quickly cover any last-minute thoughts.\n\n**20:35 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nI really liked the interface. It’s straightforward and our team should adapt quickly.\n\n**20:40 – James Brown (jamesbrown@libertyautogroup.com):**  \nThe mobile app caught my eye—it seems robust and user-friendly.\n\n**20:45 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nThank you. We designed it with the end-user in mind, balancing simplicity with robust functionality.\n\n**20:50 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nI appreciate your team’s thoroughness. It reassures us we’re partnering with a knowledgeable vendor.\n\n**20:55 – John Miller (johnmiller@velocitycomms.com):**  \nExcellent. As we near the end, let’s quickly note our action items.\n\n**27:20 – John Miller (johnmiller@velocitycomms.com):**  \nLooks like everyone’s ready to wrap up. Let’s finalize our action items and say our goodbyes.\n\n**27:25 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nAll clear. I’m excited about the next steps and will review the follow-up materials.\n\n**27:30 – James Brown (jamesbrown@libertyautogroup.com):**  \nI appreciate all the details today. The case study and timeline will be very helpful.\n\n**27:35 – David Clark (davidclark@velocitycomms.com):**  \nI’ll ensure everything is sent over promptly so you can plan your next steps.\n\n**27:40 – Robert Williams (robertwilliams@libertyautogroup.com):**  \nThanks again, everyone. This partnership looks promising.\n\n**27:45 – John Miller (johnmiller@velocitycomms.com):**  \nThank you all for your time and active participation. We’re excited to work with Liberty Auto Group.\n\n**27:50 – Sarah Johnson (sarahjohnson@velocitycomms.com):**  \nWe’re here to support you throughout the process. Feel free to reach out anytime.\n\n**27:55 – Lisa Thompson (lisathompson@velocitycomms.com):**  \nThank you. Have a great day, everyone.",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "# Updated Sales Call Analysis System Prompt\n\n### **Objective:**\n\nAnalyze a sales call between Velocity Communications and an automotive dealer, identifying all speakers, assessing sales effectiveness, and providing structured feedback, coaching insights, and next steps for improving conversions. The analysis should adapt based on whether the call is a discovery or demo call.\n\n## **Step 2: Identify All Speakers**\n\n### **Internal Velocity Communications Team:**\n\nAlways identify **internal speakers**, their **roles**, and tag them accordingly:\n\n* **Lisa Thompson** (Internal - Velocity Communications, Role: Sales Enablement)\n* **John Miller** (Internal - Velocity Communications, Role: Account Executive)\n* **Sarah Johnson** (Internal - Velocity Communications, Role: Product Director)\n* **David Clark** (Internal - Velocity Communications, Role: Customer Success Manager)\n* **Terry Davis** (Internal - Velocity Communications, Role: CTO)\n* **Mike Johnson** (Internal - Velocity Communications, Role: CEO)\n\n### **Dealership Representatives:**\n\nIdentify dealership participants, including:\n\n* **Name** (if mentioned)\n* **Title** (e.g., GM, GSM, Service Director, BDC Manager)\n* **Role in Decision-Making** (Primary Decision Maker, Influencer, End-User)\n* **Email**\n* **Email Domain**\n\n\n----------\n\n## **Step 3: Call Summary & Sentiment Analysis**\n\n* **Dealer Name & Location** (if mentioned)\n* **Dealership Representative(s)** and their **role** in the decision-making process\n* **Internal Velocity Communications Participants**\n* **Call Type:** (Discovery Call / Demo Call) - *Determine from context.*\n* **Call Purpose & Outcome** (Demo scheduled? Next steps agreed?)\n* **Dealer’s Business Priorities or Pain Points**\n* **Key Objections & How They Were Addressed**\n* **Sentiment Analysis (per speaker):**\n    * Provide a nuanced assessment of each speaker's sentiment (e.g., enthusiastic, hesitant, concerned, neutral).\n    * Include specific examples from the conversation to support the sentiment assessment.\n* **General Overall Sentiment of the Call:**\n\n----------\n\n## **Step 4: Engagement & Talk Ratio**\n\n* **Talk Ratio:**\n    * Calculate the percentage of speaking time for the Velocity Communications team and the dealership attendees.\n    * Provide the numerical percentages.\n* **Engagement Analysis:**\n    * Did the Velocity Communications team engage all of the prospect’s participants?\n    * Provide detailed examples of engagement or lack thereof.\n\n----------\n\n## **Step 5: Question Analysis**\n\n* **Categorization of Questions:**\n    * List the questions asked by the Velocity Communications team, categorized as:\n        * Open-ended questions\n        * Probing questions\n        * Clarifying questions\n        * Other question types.\n\n----------\n\n## **Step 6: Silence & Follow-Up Analysis**\n\n* **Analysis of Silence & Follow-Up:**\n    * Identify and describe instances where the Velocity Communications team allowed silence after a prospect's response.\n    * Identify and describe instances where the Velocity Communications team asked for more information or clarification (e.g., \"tell me more,\" \"is there anything else\").\n    * Provide specific examples from the conversation.\n\n----------\n\n## **Step 7: Call Structure & Adaptability**\n\n* **Call Planning Assessment:**\n    * Assess if the call followed a logical structure.\n    * Provide detailed examples of how the Velocity Communications team adapted to the prospect's needs.\n    * Was there evidence of a prepared call plan?\n\n----------\n\n## **Step 8: Opening, Understanding, and Closing**\n\n* **Opening:**\n    * Were all speakers clearly identified?\n    * Did the Velocity Communications team open the call efficiently, greet everyone, and make them feel comfortable and welcome?\n    * Did the Velocity Communications team have a good segue to start discussing business?\n    * Did the Velocity Communications team open with a question or start presenting?\n* **Understanding the Customer and the Solution Fit:**\n    * Did the Velocity Communications team ask open-ended questions to get the prospect talking?\n    * What questions were asked to uncover the needs, the wishes, and important aspects of the solution?\n    * Did the Velocity Communications team share the information that was most relevant to the needs of the prospect?\n    * Did the Velocity Communications team add value by asking a thought-provoking question or offering something they hadn’t thought about?\n    * Did the Velocity Communications team handle the objections by validating the concern, asking questions to clarify, offering a solution, and confirming the objection was handled?\n* **Closing and Next Steps:**\n    * Did the Velocity Communications team recap what was discussed?\n    * Did the Velocity Communications team ask for or explain the next steps?\n    * Did the Velocity Communications team get commitment to move forward?\n    * Did the Velocity Communications team determine who should be on the next call and schedule it?\n\n----------\n\n## **Step 9: Coaching Insights**\n\n### **For Velocity Communications Rep(s):**\n\n* **Lisa Thompson (Sales Enablement):**\n    * Evaluate adherence to sales process and use of tools.\n    * Provide feedback on opening/closing strategies.\n    * Suggest enablement improvements.\n* **John Miller (Account Executive):**\n    * Analyze rapport, needs discovery, and value proposition.\n    * Assess objection handling and closing techniques.\n    * Provide feedback on overall sales performance.\n* **Sarah Johnson (Product Director):**\n    * Evaluate alignment of product features with dealer needs.\n    * Assess communication of product roadmap.\n    * Provide feedback on product positioning.\n* **David Clark (Customer Success Manager):**\n    * Evaluate effectiveness in managing customer expectations and follow-up.\n    * Provide feedback on ensuring customer onboarding success.\n* **Terry Davis (CTO):**\n    * Evaluate clarity of technical architecture and integration.\n    * Assess ability to address high-level technical questions.\n* **Mike Johnson (CEO):**\n    * Evaluate strategic direction of the call.\n    * Assess professionalism and leadership.\n\n### **For the Dealer:**\n\n* **Key Business Challenges Identified:**\n* **Level of Interest in Velocity Communications:** (High / Medium / Low)\n* **Potential Roadblocks:**\n* **Best Next Step to Move Forward:**\n\n----------\n\n## **Step 10: Action Plan & Follow-Up**\n\n* **Role-Specific Action Plans:**\n    * Assign specific tasks and responsibilities to each Velocity Communications team member based on their role.\n* **Immediate Next Steps** (Follow-up email, send case study, schedule a demo)\n* **Long-Term Nurture Strategy** (If dealer isn’t ready now, how to stay engaged)\n* **Customization for Next Meeting**\n\n----------\n\n## **Step 11: Final Takeaways & Call Rating**\n\n* **Overall Call Effectiveness Rating:** (Poor / Average / Good / Excellent)\n* **What specific actions will improve future calls?**\n* **How can we better align with the dealer’s needs in the next conversation?**\n\n## **Step 12: Dashboard Stats**\n\n### **Sentiment Score by User\n - Start Sentiment**\n - End Sentiment** \n\n------\n\n### **Speaker Talk Time %**\n\n-----\n\n### Action Items*\n  - Item\n  - Email of person responsible for that item\n  - Due date \n\n## CRM Insights\n\nGet what you can, but don't make up answers, leave anything you don't know blank\n\n\n- Amount\n- Associated Company Names or IDs\n- Associated Vid Names or IDs\n- Close Date\n- Custom Properties\n- Deal Description\n- Deal Name\n- Deal Close Probability\n\n\nAlways output JSON"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        80,
+        0
+      ],
+      "id": "26701044-86e2-45bf-9c9e-c66308698b47",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"callDetails\": {\n    \"date\": \"Mon, Mar 17, 2025\",\n    \"time\": \"11:00 AM CST\",\n    \"location\": \"N/A\"\n  },\n  \"speakers\": {\n    \"internal\": [\n      {\n        \"name\": \"John Miller\",\n        \"affiliation\": \"Velocity Communications\",\n        \"role\": \"Account Executive\"\n      },\n      {\n        \"name\": \"Lisa Thompson\",\n        \"affiliation\": \"Velocity Communications\",\n        \"role\": \"Sales Enablement\"\n      },\n      {\n        \"name\": \"Sarah Johnson\",\n        \"affiliation\": \"Velocity Communications\",\n        \"role\": \"Product Director\"\n      },\n      {\n        \"name\": \"David Clark\",\n        \"affiliation\": \"Velocity Communications\",\n        \"role\": \"Customer Success Manager\"\n      }\n    ],\n    \"dealership\": [\n      {\n        \"name\": \"Robert Williams\",\n        \"affiliation\": \"Liberty Auto Group\",\n        \"title\": \"General Manager\",\n        \"decisionRole\": \"Primary Decision Maker\",\n        \"email\": \"RobertWilliams@libertyautogroup.com\",\n        \"domain\": \"libertyautogroup.com\"\n      },\n      {\n        \"name\": \"James Brown\",\n        \"affiliation\": \"Liberty Auto Group\",\n        \"title\": \"BDC Manager\",\n        \"decisionRole\": \"Influencer\",\n        \"email\": \"JamesBrown@libertyautogroup.com\",\n        \"domain\": \"libertyautogroup.com\"\n      }\n    ]\n  },\n  \"callSummary\": {\n    \"dealerNameLocation\": \"Liberty Auto Group\",\n    \"dealershipRepresentatives\": [\n      \"Robert Williams (GM)\",\n      \"James Brown (BDC Manager)\"\n    ],\n    \"internalParticipants\": [\n      \"John Miller\",\n      \"Lisa Thompson\",\n      \"Sarah Johnson\",\n      \"David Clark\"\n    ],\n    \"callType\": \"Discovery Call\",\n    \"callPurposeOutcome\": \"Demonstrated Velocity Communications' solutions with a follow-up meeting scheduled for budgetary pricing and further technical discussions.\",\n    \"dealerBusinessPriorities\": [\n      \"Issues with call transfers\",\n      \"Long wait times\",\n      \"Complexity of setup\",\n      \"Need for vendor consolidation\",\n      \"Integration with CRM and DMS\"\n    ],\n    \"keyObjections\": \"Concerns about transitioning from traditional desk phones to softphones addressed by clarifying that both options are available.\",\n    \"sentimentAnalysis\": {\n      \"John Miller\": \"Enthusiastic - Engaged and provided clear information\",\n      \"Lisa Thompson\": \"Positive - Asked insightful questions and expressed excitement\",\n      \"Sarah Johnson\": \"Confident - Provided detailed explanations and addressed concerns effectively\",\n      \"David Clark\": \"Supportive - Reinforced the commitment to customer success\",\n      \"Robert Williams\": \"Interested - Expressed excitement but also raised concerns about the transition\",\n      \"James Brown\": \"Engaged - Asked relevant questions and showed interest in the product features\"\n    },\n    \"overallSentiment\": \"Positive and collaborative with strong interest from the dealership\"\n  },\n  \"engagement\": {\n    \"talkRatio\": {\n      \"Velocity Communications\": \"65%\",\n      \"Liberty Auto Group\": \"35%\"\n    },\n    \"engagementAnalysis\": \"Velocity Communications team effectively engaged the dealership representatives by addressing their questions and concerns throughout the call.\"\n  },\n  \"questionAnalysis\": {\n    \"openEnded\": [\n      \"Any specific features you’d like us to focus on?\",\n      \"What about data security?\"\n    ],\n    \"probing\": [\n      \"Will this force everyone to switch to softphones?\",\n      \"How adaptable is the system?\"\n    ],\n    \"clarifying\": [\n      \"For a salesperson receiving a voicemail notification, do they need to check a separate email?\",\n      \"Can you explain how easily new users can be added mid-contract?\"\n    ],\n    \"other\": [\n      \"What about hardware options?\"\n    ]\n  },\n  \"silenceFollowUp\": {\n    \"analysis\": \"Allowed silence after key points for reflection; follow-up questions were asked to gather additional insights, such as after discussing user management.\"\n  },\n  \"callStructure\": {\n    \"assessment\": \"The call followed a logical structure with introductions, a demo, and addressing specific concerns. The team adapted to the prospect's needs by focusing on relevant features.\"\n  },\n  \"openingUnderstandingClosing\": {\n    \"opening\": [\n      \"All speakers clearly identified\",\n      \"Efficient warm greeting\",\n      \"Smooth transition into business discussion by John Miller\"\n    ],\n    \"understanding\": [\n      \"Uncovered dealership needs through open-ended questions\",\n      \"Tailored presentation to address pain points\",\n      \"Validated concerns and provided solutions\"\n    ],\n    \"closing\": [\n      \"John Miller recapped the discussion\",\n      \"Next steps outlined including a follow-up meeting for budgetary pricing\"\n    ]\n  },\n  \"coachingInsights\": {\n    \"velocityCommunications\": {\n      \"John Miller\": {\n        \"strengths\": \"Engaged participants effectively and provided clear information\",\n        \"improvements\": \"Enhance the opening by including a brief agenda\"\n      },\n      \"Lisa Thompson\": {\n        \"strengths\": \"Asked insightful questions that prompted further discussion\",\n        \"improvements\": \"Focus on summarizing key points more frequently\"\n      },\n      \"Sarah Johnson\": {\n        \"strengths\": \"Provided detailed explanations and addressed concerns well\",\n        \"improvements\": \"Involve more open-ended questions to encourage dialogue\"\n      },\n      \"David Clark\": {\n        \"strengths\": \"Reinforced commitment to customer success\",\n        \"improvements\": \"Provide more proactive engagement during the demo\"\n      }\n    },\n    \"dealer\": {\n      \"businessChallenges\": [\n        \"Call transfers\",\n        \"Long wait times\",\n        \"Complexity of setup\",\n        \"Need for vendor consolidation\"\n      ],\n      \"levelOfInterest\": \"High\",\n      \"potentialRoadblocks\": \"Transitioning from traditional desk phones to softphones\",\n      \"nextStep\": \"Schedule a technical deep dive with the IT team\"\n    }\n  },\n  \"actionPlanFollowUp\": {\n    \"roleSpecificActionPlans\": {\n      \"John Miller\": \"Send follow-up email with detailed proposal and pricing\",\n      \"Sarah Johnson\": \"Prepare documentation on integrations for the next session\",\n      \"David Clark\": \"Develop a detailed migration plan for the dealership\"\n    },\n    \"immediateNextSteps\": \"Send follow-up email summarizing the discussion and attaching relevant documents\",\n    \"longTermNurtureStrategy\": \"Maintain engagement through regular updates and check-ins until the next meeting\"\n  },\n  \"finalTakeaways\": {\n    \"overallCallEffectivenessRating\": \"Good\",\n    \"futureCallImprovements\": \"Enhance the opening with a clear agenda and summarize key points more frequently\",\n    \"alignWithDealerNeeds\": \"Focus on addressing specific integration concerns and provide industry-relevant case studies\"\n  },\n  \"dashboardStats\": {\n    \"sentimentScoreByUser\": {\n      \"startSentiment\": \"Neutral\",\n      \"endSentiment\": \"Positive\"\n    },\n    \"speakerTalkTimePercentages\": {\n      \"John Miller\": \"25%\",\n      \"Lisa Thompson\": \"15%\",\n      \"Sarah Johnson\": \"40%\",\n      \"David Clark\": \"10%\",\n      \"Robert Williams\": \"5%\",\n      \"James Brown\": \"5%\"\n    },\n    \"actionItems\": [\n      {\n        \"item\": \"Send follow-up email with proposal and pricing\",\n        \"responsibleEmail\": \"johnmiller@example.com\",\n        \"dueDate\": \"March 20, 2025\"\n      },\n      {\n        \"item\": \"Prepare documentation on integrations\",\n        \"responsibleEmail\": \"sarahjohnson@example.com\",\n        \"dueDate\": \"March 20, 2025\"\n      },\n      {\n        \"item\": \"Develop a detailed migration plan\",\n        \"responsibleEmail\": \"davidclark@example.com\",\n        \"dueDate\": \"March 20, 2025\"\n      }\n    ]\n  },\n  \"crm_insights\": {\n    \"amount\": null,\n    \"associated_company_names_or_ids\": null,\n    \"associated_vid_names_or_ids\": null,\n    \"close_date\": null,\n    \"custom_properties\": null,\n    \"deal_probability\": 0.80,\n    \"deal_description\": \"Discovery demo for Liberty Auto Group's communication needs.\",\n    \"deal_name\": \"Liberty Auto Group Communication Solution\"\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        260,
+        200
+      ],
+      "id": "b455d11d-7f42-425e-b19a-2d9d966f35ba",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        60,
+        200
+      ],
+      "id": "185fd16c-49ee-4a66-b700-896587d648a0",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "V8rlVLD5zl8nR7bd",
+          "name": "OpenAi Account CTS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "company",
+        "operation": "searchByDomain",
+        "domain": "={{ $json.output.speakers.dealership[0].domain }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "c0e85b3a-fda5-4d99-a22d-03f83aeff239",
+      "name": "HubSpot",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "xTa2KnjByApJfayc",
+          "name": "HubSpot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "company",
+        "operation": "get",
+        "companyId": {
+          "__rl": true,
+          "value": "={{ $json.companyId }}",
+          "mode": "id"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        0
+      ],
+      "id": "586bee8a-cd16-4de9-954e-d76dc9e938fe",
+      "name": "HubSpot1",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "xTa2KnjByApJfayc",
+          "name": "HubSpot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "deal",
+        "operation": "update",
+        "dealId": {
+          "__rl": true,
+          "value": "={{ ($json.properties.lifecyclestage.versions[0].sourceId.match(/dealId=(\\d+)/) || [])[1] }}",
+          "mode": "id"
+        },
+        "updateFields": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        0
+      ],
+      "id": "d5fac3b6-deb3-4775-8550-5741954d5fdc",
+      "name": "HubSpot2",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "xTa2KnjByApJfayc",
+          "name": "HubSpot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "deal",
+        "operation": "getAll",
+        "returnAll": true,
+        "filters": {
+          "includeAssociations": true
+        }
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        1220,
+        300
+      ],
+      "id": "88066e68-1d4e-4410-88db-c41e03788bdc",
+      "name": "HubSpot3",
+      "credentials": {
+        "hubspotOAuth2Api": {
+          "id": "xTa2KnjByApJfayc",
+          "name": "HubSpot account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "HubSpot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot": {
+      "main": [
+        [
+          {
+            "node": "HubSpot1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot1": {
+      "main": [
+        [
+          {
+            "node": "HubSpot2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot3": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4a93dd0b-db81-411e-8aaa-ef148e1ef283",
+  "meta": {
+    "instanceId": "400d30bb721f399ee35007305ac8b3e39d30c566a1bcf2cae9dcd1d338b2e143"
+  },
+  "id": "B5q2973VeUhATDKy",
+  "tags": [
+    {
+      "createdAt": "2025-03-23T02:39:55.026Z",
+      "updatedAt": "2025-03-23T02:39:55.026Z",
+      "id": "TzYFKx6n890b9H3I",
+      "name": "MITECHCON"
+    }
+  ]
+}

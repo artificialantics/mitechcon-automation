@@ -1,0 +1,763 @@
+{
+  "name": "AI Powered Email Manager with Gmail, Open AI, Webhooks, HTML and Trello",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "labelIds": [
+            "INBOX",
+            "UNREAD"
+          ],
+          "q": "newer_than:1d"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -420,
+        -240
+      ],
+      "id": "1a5b81ea-0a67-4844-a258-c9e0e63d2f04",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "=Subject: {{ $('Gmail Trigger').item.json.subject }}\nBody: {{ $('Gmail Trigger').item.json.text }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Podcast Guest",
+              "description": "Identify whether the email expresses interest in being a guest on the Artificial Antics podcast. Key phrases to look for include: 'join your podcast', 'be on your podcast', 'interested in being a guest', 'would love to discuss on your podcast', 'would love to be featured', 'inviting to join as a guest', 'would love to talk on your show', 'suggesting a guest for your podcast', 'looking to appear on your show', 'would be thrilled to share insights on your podcast', 'open to discuss being a guest'. Tag these emails as 'Podcast Guest Request'."
+            },
+            {
+              "category": "Receipts",
+              "description": "Identify whether the email contains a receipt or invoice. Key phrases to look for include: 'receipt', 'invoice', 'payment confirmation', 'thank you for your purchase', 'order confirmation', 'transaction receipt', 'purchase receipt', 'attached is your receipt', 'receipt for payment', 'invoice for', 'thank you for your order'. Tag these emails as 'Receipt' or 'Invoice'."
+            },
+            {
+              "category": "Newsletters",
+              "description": "Identify whether the email contains a newsletter that is not from AI Bytes or Artificial Antics. Key phrases to look for include: 'newsletter', 'weekly roundup', 'monthly digest', 'industry news', 'latest updates', 'insider tips', 'subscribe to our newsletter', 'this month’s edition', 'news from', 'our latest issue', 'read our newsletter', 'subscribe for more news', 'weekly'. Exclude emails that mention AI Bytes, Artificial Antics, or related terms. Tag these emails as 'External Newsletter'."
+            }
+          ]
+        },
+        "options": {
+          "fallback": "other"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [
+        220,
+        -240
+      ],
+      "id": "ee225c32-ec28-4692-ae92-255cd0694d00",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        320,
+        -20
+      ],
+      "id": "f3fd3835-676a-4644-a62f-dc2bffce071a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "V8rlVLD5zl8nR7bd",
+          "name": "OpenAi Account CTS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -200,
+        -240
+      ],
+      "id": "29d004ab-f2d9-4662-89e3-9d788ed0b6dd",
+      "name": "Mark Read",
+      "webhookId": "dfe55980-3682-4803-9693-3c6e5ca1e1ec",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "Label_211154087619113630"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        20,
+        -240
+      ],
+      "id": "2dad998d-b400-476f-9be7-b5fc9f614090",
+      "name": "Label",
+      "webhookId": "8efabb5f-ca30-40d3-ab07-184a55c84716",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        900,
+        -200
+      ],
+      "id": "922c98e1-9c3c-412c-bcc6-5e4c87133f22",
+      "name": "GPT4o-mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "V8rlVLD5zl8nR7bd",
+          "name": "OpenAi Account CTS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=From: {{ $('Gmail Trigger').item.json.from.value[0].address }}\nSubject: {{ $('Gmail Trigger').item.json.subject }}\nBody: {{ $('Gmail Trigger').item.json.text }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a helpful assistant that extracts the name of the potential guest from the email body and identifies the sender (who may be the guest's assistant). You then craft a polite email response to the sender, thanking them for their interest and letting them know that the guest can book a time for further discussion using the link: [https://calendar.app.google/ZvyxXdFvW7aatJnb6](https://calendar.app.google/ZvyxXdFvW7aatJnb6).\n\n**Inputs:**  \n- From: `{{ $json.headers.from }}`  \n- Subject: `{{ $json.headers.subject }}`  \n- Body: `{{ $json.text }}`  \n\n**Message Structure Example:**  \n- Extract **guest's name** from the email body.  \n- Identify **sender's name** from the \"From\" field.\n\n**Response Example in JSON:**  \n```json\n{\n  \"sender\": { \"email\": \"thepersonsassistant@personsdomain.com\", \"Name\": \"Jessica\" },\n  \"guests\": [{ \"email\": \"theguest@personsdomain.com\", \"Name\": \"Alvin\" }],\n  \"subject\": \"Thank you for your interest in being a guest on Artificial Antics\",\n  \"body\": \"Dear {{sender_name}},\\n\\nThank you for reaching out on behalf of {{guest_name}}. We are excited about the potential of having {{guest_name}} as a guest on our podcast, *Artificial Antics*.\\n\\nTo discuss this further, we invite {{guest_name}} to book a time via the following link: [https://calendar.app.google/ZvyxXdFvW7aatJnb6](https://calendar.app.google/ZvyxXdFvW7aatJnb6).\\n\\nLooking forward to the conversation!\\n\\nBest regards,\\nMike Onslow\\nArtificial Antics Podcast\"\n}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        880,
+        -420
+      ],
+      "id": "7cecf342-9233-4178-b653-748ff0ca94be",
+      "name": "Extract Details and Create Email",
+      "retryOnFail": true,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"sender\": { \"email\": \"thepersonsassistant@personsdomain.com\", \"Name\": \"Jessica\" },\n  \"guests\": [{ \"email\": \"theguest@personsdomain.com\", \"Name\": \"Alvin\" }],\n  \"subject\": \"Thank you for your interest in being a guest on Artificial Antics\",\n  \"body\": \"Dear {{sender_name}},\\n\\nThank you for reaching out on behalf of {{guest_name}}. We are excited about the potential of having {{guest_name}} as a guest on our podcast, *Artificial Antics*.\\n\\nTo discuss this further, we invite {{guest_name}} to book a time via the following link: [https://calendar.app.google/ZvyxXdFvW7aatJnb6](https://calendar.app.google/ZvyxXdFvW7aatJnb6).\\n\\nLooking forward to the conversation!\\n\\nBest regards,\\nMike Onslow\\nArtificial Antics Podcast\",\n  \"original_email\": \"--------- Forwarded message ---------From: Jessica Mularczyk jessica@chapmancommunicationsgroup.comDate: Tue, Nov 26, 2024 at 4:09202fPMSubject: Vincent Allen on AI, tech law, and reshaping innovation...To: podcast.artificial.antics@gmail.com podcast.artificial.antics@gmail.comHi Mike and Rico,I recently tuned into your episode Send us a Text Message and was interested in the discussion on data management with Tim Hayden. The dialogue on enhancing customer interactions through AI truly caught my attention.Given Vincent Allens vast expertise in AI and IP law, I believe he would add significant value to such discourse. As a Partner at Carstens, Allen & Gourley, LLP, Vincent has a hands-on approach to tech law and has presented extensively on GenAI-related topics.\\\\nVincent's deep understanding of AI ethics and legal challenges could complement your ongoing discussions perfectly. Would you be interested in featuring him in one of your future episodes?\\\\n\\\\nBest regards,\\\\n\\\\nJessica\\\\n\\\\n\\\\nJessica Mularczyk \\\\nChapman Communications Group \\\\n\\\\nchapmancommunicationsgroup.com508-498-9300 (o)\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1040,
+        -200
+      ],
+      "id": "4b8a26c3-8d50-452d-b33f-7175ed6e04d4",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        -200
+      ],
+      "id": "56423349-1e0b-4f97-9184-64c89506d27f",
+      "name": "GPT4o-mini1",
+      "credentials": {
+        "openAiApi": {
+          "id": "V8rlVLD5zl8nR7bd",
+          "name": "OpenAi Account CTS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Convert this into HTMl that we can include in a Gmail message. {{ $json.output[1].content[0].text }} remove all reference markers like [4][6][x]. IMPORTANT: Only provide the HTML output! Do not even include markers around the HTML like ```html ``` <- dont do this!"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1500,
+        -420
+      ],
+      "id": "d6d1bbba-7a1c-4359-a6b4-a9e4322c2d78",
+      "name": "Build Dossier"
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "Label_7142800478468088950"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        -420
+      ],
+      "id": "5050f2c1-4f39-46bc-9c67-024c7ceddf5a",
+      "name": "Label: POTENTIAL GUEST",
+      "webhookId": "cc0a8339-01ba-4271-9105-705c35cc9ebd",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "mike@antics.tv",
+        "subject": "Potential Guest Dossier",
+        "message": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      margin: 0;\n      padding: 0;\n      background-color: #f4f7fb;\n    }\n    .container {\n      width: 100%;\n      max-width: 600px;\n      margin: 20px auto;\n      padding: 20px;\n      background-color: #ffffff;\n      border-radius: 8px;\n      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n    }\n    h1 {\n      font-size: 26px;\n      color: #3d4b9e; /* Dark Purple */\n      border-bottom: 2px solid #00f0f7; /* Aqua Blue */\n      padding-bottom: 5px;\n      margin-bottom: 15px;\n    }\n    p {\n      font-size: 16px;\n      color: #2b2a33; /* Dark Gray */\n      line-height: 1.6;\n    }\n    .highlight {\n      color: #3d4b9e; /* Dark Purple */\n      font-weight: bold;\n    }\n    .dossier {\n      background-color: #e8f8f9; /* Light Aqua */\n      padding: 15px;\n      border-radius: 5px;\n      margin-top: 20px;\n      border-left: 5px solid #3d4b9e; /* Dark Purple */\n    }\n    blockquote {\n      background-color: #f1f8f5;\n      padding: 15px;\n      border-left: 4px solid #00f0f7; /* Aqua Blue */\n      color: #2b2a33;\n      font-style: italic;\n      margin-top: 20px;\n      border-radius: 5px;\n      font-size: 16px;\n    }\n    blockquote p {\n      margin: 0;\n    }\n    .footer {\n      margin-top: 30px;\n      text-align: center;\n      font-size: 14px;\n      color: #8c8c8c;\n    }\n    .footer a {\n      color: #3d4b9e; /* Dark Purple */\n      text-decoration: none;\n    }\n  </style>\n</head>\n<body>\n\n  <div class=\"container\">\n    <section>\n      <h1>Summary</h1>\n      <p><span class=\"highlight\">From:</span> {{ $('Gmail Trigger').item.json.from.value[0].address }} ({{ $('Gmail Trigger').item.json.from.value[0].name }})</p>\n      <p><span class=\"highlight\">Subject:</span> {{ $('Gmail Trigger').item.json.subject }}</p>\n      <blockquote>\n        <p>{{ $('Gmail Trigger').item.json.html }}</p>\n      </blockquote>\n    </section>\n    \n    <section>\n      <h1>Dossier</h1>\n      <div class=\"dossier\">\n        {{ $('Build Dossier').item.json.text }}\n      </div>\n    </section>\n\n    <div class=\"footer\">\n      <p>For more information, visit our <a href=\"#\">website</a>.</p>\n    </div>\n  </div>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2080,
+        -280
+      ],
+      "id": "7da43a4d-59cc-416c-b151-65483cb96200",
+      "name": "Email Detailed Guest Profile",
+      "webhookId": "60a0aa0d-f195-432b-870c-3bb29b051a8c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "Label_4859068934075666881"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        660,
+        280
+      ],
+      "id": "697e8930-3883-49cb-8504-f9e10c3a43cb",
+      "name": "Label: NEWS",
+      "webhookId": "f0dd80d7-cd16-4669-ad15-1309a68bc36f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "Label_5709014612257569090"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        20
+      ],
+      "id": "6f94cbc5-a6c6-4928-b69f-3b07cef9ec6a",
+      "name": "Label: RECEIPTS",
+      "webhookId": "8e69b22b-ad14-4b92-81a0-0b475f87256e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      margin: 0;\n      padding: 0;\n      background-color: #f4f7fb;\n    }\n    .container {\n      width: 100%;\n      max-width: 600px;\n      margin: 20px auto;\n      padding: 20px;\n      background-color: #ffffff;\n      border-radius: 8px;\n      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n    }\n    h1 {\n      font-size: 26px;\n      color: #3d4b9e; /* Dark Purple */\n      border-bottom: 2px solid #00f0f7; /* Aqua Blue */\n      padding-bottom: 5px;\n      margin-bottom: 15px;\n    }\n    p {\n      font-size: 16px;\n      color: #2b2a33; /* Dark Gray */\n      line-height: 1.6;\n    }\n    .highlight {\n      color: #3d4b9e; /* Dark Purple */\n      font-weight: bold;\n    }\n    .dossier {\n      background-color: #e8f8f9; /* Light Aqua */\n      padding: 15px;\n      border-radius: 5px;\n      margin-top: 20px;\n      border-left: 5px solid #3d4b9e; /* Dark Purple */\n    }\n    blockquote {\n      background-color: #f1f8f5;\n      padding: 15px;\n      border-left: 4px solid #00f0f7; /* Aqua Blue */\n      color: #2b2a33;\n      font-style: italic;\n      margin-top: 20px;\n      border-radius: 5px;\n      font-size: 16px;\n    }\n    blockquote p {\n      margin: 0;\n    }\n    .footer {\n      margin-top: 30px;\n      text-align: center;\n      font-size: 14px;\n      color: #8c8c8c;\n    }\n    .footer a {\n      color: #3d4b9e; /* Dark Purple */\n      text-decoration: none;\n    }\n  </style>\n</head>\n<body>\n\n  <div class=\"container\">\n    <section>\n      <h1>Summary</h1>\n      <p><span class=\"highlight\">From:</span> {{ $('Gmail Trigger').item.json.from.value[0].address }} ({{ $('Gmail Trigger').item.json.from.value[0].name }})</p>\n      <p><span class=\"highlight\">Subject:</span> {{ $('Gmail Trigger').item.json.subject }}</p>\n      <blockquote>\n        <p>{{ $('Gmail Trigger').item.json.html }}</p>\n      </blockquote>\n    </section>\n    \n    <section>\n      <h1>Dossier</h1>\n      <div class=\"dossier\">\n        {{ $json.text }}\n      </div>\n    </section>\n\n    <div class=\"footer\">\n      <p>For more information, visit our <a href=\"#\">website</a>.</p>\n    </div>\n  </div>\n\n</body>\n</html>"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1860,
+        -420
+      ],
+      "id": "7c83ee40-d0a2-4697-8a91-e3c9a7079aaa",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "sendTo": "artificialantics+jkxaouaanak0pdgikume@boards.trello.com",
+        "subject": "=Potential Guest:  {{ $('Extract Details and Create Email').item.json.output.subject }}",
+        "emailType": "text",
+        "message": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2080,
+        -520
+      ],
+      "id": "077ad616-1d26-447a-863d-db00dc513e7c",
+      "name": "Create Trello Card",
+      "webhookId": "55a25ca8-956e-49d1-a189-f3734ae43969",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        880,
+        480
+      ],
+      "id": "2bc14643-510d-4cca-b59d-12f13779ffeb",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "V8rlVLD5zl8nR7bd",
+          "name": "OpenAi Account CTS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"decision\": \"yes\",\n  \"summary\": \"The newsletter discusses significant advancements in AI, particularly focusing on ethical considerations and new technologies such as faster model training and custom AI chips from Meta. It also explores the implications of AI chatbots altering their behavior to be more likable, alongside the new Deep Research feature from ChatGPT that enhances research capabilities.\",\n  \"key_topics\": [\n    \"AI advancements\",\n    \"Chatbot behavior\",\n    \"Faster model training\",\n    \"Meta AI chips\",\n    \"AI ethics\",\n    \"Deep Research feature\",\n    \"Inductive Moment Matching (IMM)\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1060,
+        480
+      ],
+      "id": "f7ff9a82-b075-4bfb-9b45-fac296c6cff7",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Subject: {{ $('Gmail Trigger').item.json.subject }}\nBody: {{ $('Gmail Trigger').item.json.text }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are a helpful assistant tasked with deciding whether a newsletter's content is worth reading. The input will include a **subject** and **message body**. I will analyze the content based on the following preferences:\n\n- **AI**\n- **Business**\n- **Telecom**\n- **Communications**\n- **Intersection of these fields**\n\n### Decision Criteria:\n1. Check if the **subject** and **message body** contain relevant topics.\n2. Identify key topics related to **AI, business, telecom**, and **communications**.\n3. If the content is aligned with my interests, create a summary and a list of key topics.\n\n### Output Format:\n\nThe output should be in **JSON** format, containing:\n- A **decision** on whether to read the newsletter (\"yes\" or \"no\").\n- A **summary** of the key points covered in the newsletter.\n- A **list** of relevant **key topics** extracted from the content.\n\n#### Example Output (JSON):\n\n```json\n{\n  \"decision\": \"yes\",\n  \"summary\": \"This newsletter discusses the latest advancements in AI for telecom, including new technologies aimed at improving business communication systems.\",\n  \"key_topics\": [\n    \"AI advancements\",\n    \"Telecom innovations\",\n    \"Business communication systems\"\n  ]\n}\n\n```\n\nThe JSON response will include:\n\n-   **Decision**: Whether I should read it based on its relevance.\n-   **Summary**: A concise overview of the key points.\n-   **Key Topics**: A list of relevant topics like AI, business, telecom, and communications.\n\n### Example Input:\n\n-   **Subject**: \"AI-Driven Solutions for Telecom Business Growth\"\n-   **Message Body**: \"This newsletter explores how AI is transforming the telecom industry, focusing on applications in business operations and communication systems.\"\n\n### Output (JSON Example):\n\n```json\n{\n  \"decision\": \"yes\",\n  \"summary\": \"The newsletter discusses AI-driven solutions in the telecom industry, particularly for business operations and communication systems.\",\n  \"key_topics\": [\n    \"AI-driven solutions\",\n    \"Telecom industry\",\n    \"Business operations\",\n    \"Communication systems\"\n  ]\n}\n\n```"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        880,
+        280
+      ],
+      "id": "bc819467-065e-4193-b1db-65277d870389",
+      "name": "Determine Interest"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $json.output.subject }}",
+        "emailType": "html",
+        "message": "={{ $json.output.body }}",
+        "options": {
+          "threadId": "={{ $('Gmail Trigger').item.json.threadId }}",
+          "sendTo": "={{ $('Gmail Trigger').item.json.from.value[0].address }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1300,
+        -640
+      ],
+      "id": "fcdf3752-4500-47cb-b9c2-359fb304d2d1",
+      "name": "Create Draft Response to Potential Guest",
+      "webhookId": "3a5ad644-4ce2-4a8e-95de-8c208a81150f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "WlVZtqlIwHJSilwR",
+          "name": "Gmail account (mike@antics.tv)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        0
+      ],
+      "id": "178b0320-9a29-4372-9ce3-a1b9e6529b39",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "V8rlVLD5zl8nR7bd",
+          "name": "OpenAi Account CTS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/responses",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"gpt-4o-mini\",\n  \"input\": [\n    {\n      \"role\": \"system\",\n      \"content\": [\n        {\n          \"type\": \"input_text\",\n          \"text\": \"Request up-to-date web search data on the following individual (the guest) \\n and create a detailed dossier. Use available information from public databases, social media, publications, and any other reliable sources. Do not give me information about historical figures, should be a living person with an online presence. Include the following sections: \\n\\n \\n\\n1. Personal Information: - Full Name: (can use from previous) - Age (if available): [Insert Age] - Location: [Insert Location] - Known Affiliations (family, organizations, etc.) 2. Professional Background: - Current Job Title(s): [Insert Job Title] - Past Positions: List previous roles and companies, including job titles, dates, and key responsibilities. - Career Highlights: Major achievements or milestones in their professional life. - Skills & Expertise: Key technical, professional, or academic skills. - Certifications and Education: Relevant degrees, certifications, or specialized training. 3. Online Presence: - Social Media Accounts: Links to LinkedIn, Twitter, personal blogs, or other platforms. - Website or Portfolio (if applicable): Link to personal or professional websites. - Public Mentions: Any notable online content (interviews, articles, guest posts, etc.). 4. Publications & Thought Leadership: - Books, Articles, and Papers: Titles, publishers, and links (if available). - Conference Talks / Webinars: Notable speaking engagements or presentations. - Contributions to Industry: Involvement in industry groups, advisory boards, or expert panels. 5. Recent Activities: - Current Projects or Initiatives: Ongoing work, collaborations, or focus areas. - Media Coverage: Any recent articles, interviews, or media appearances. - Awards & Recognition: Awards, accolades, or honors received. 6. Reputation & Influence: - Public Sentiment: General public perception or reputation in their field (based on reviews, ratings, etc.). - Notable Mentions: Positive or critical media coverage. - Peer Influence: How they are regarded by industry leaders or in their field. 7. Other Relevant Information: - Personal Interests or Causes: Hobbies, passions, or charitable activities. - Public Contact Info (if available): Email, phone number, or contact forms.\"\n        }\n      ]\n    },\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"input_text\",\n          \"text\": \"{{ $json.output }}\"\n        }\n      ]\n    },\n    {\n      \"type\": \"web_search_call\",\n      \"id\": \"ws_67d4c35812f48190850c02ee92b7f0190198c3b1d3818edd\",\n      \"status\": \"completed\"\n    }\n  ],\n  \"text\": {\n    \"format\": {\n      \"type\": \"text\"\n    }\n  },\n  \"reasoning\": {},\n  \"tools\": [\n    {\n      \"type\": \"web_search_preview\",\n      \"user_location\": {\n        \"type\": \"approximate\",\n        \"country\": \"US\",\n        \"region\": \"Michigan\",\n        \"city\": \"Farmington\"\n      },\n      \"search_context_size\": \"high\"\n    }\n  ],\n  \"temperature\": 1,\n  \"max_output_tokens\": 2048,\n  \"top_p\": 1,\n  \"store\": true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1280,
+        -420
+      ],
+      "id": "b939d28b-0ae2-4027-8359-9da6200fb2c2",
+      "name": "OpenAI Responses API (web search)",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "dAd6g9KkGE5pcdtv",
+          "name": "OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://b167c381-412a-43a1-80ce-81a26a9029f5-00-2jfjkyqtvlur8.kirk.replit.dev:8000/topics",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"topic\": {{ JSON.stringify($json.output.key_topics) }}}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1240,
+        280
+      ],
+      "id": "c1f20329-cb15-4583-a9e3-8f83bf2ae83e",
+      "name": "Push Topics to Heat Map"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mark Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "Label: POTENTIAL GUEST",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Label: RECEIPTS",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Label: NEWS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Read": {
+      "main": [
+        [
+          {
+            "node": "Label",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Label": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT4o-mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Extract Details and Create Email",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Extract Details and Create Email",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Details and Create Email": {
+      "main": [
+        [
+          {
+            "node": "Create Draft Response to Potential Guest",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "OpenAI Responses API (web search)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT4o-mini1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Build Dossier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Dossier": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Label: POTENTIAL GUEST": {
+      "main": [
+        [
+          {
+            "node": "Extract Details and Create Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Label: RECEIPTS": {
+      "main": [
+        []
+      ]
+    },
+    "Email Detailed Guest Profile": {
+      "main": [
+        []
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Email Detailed Guest Profile",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create Trello Card",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Label: NEWS": {
+      "main": [
+        [
+          {
+            "node": "Determine Interest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Determine Interest",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Determine Interest",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Determine Interest": {
+      "main": [
+        [
+          {
+            "node": "Push Topics to Heat Map",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Responses API (web search)": {
+      "main": [
+        [
+          {
+            "node": "Build Dossier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b24d6711-9df0-4d4a-9921-c6b46174d30d",
+  "meta": {
+    "instanceId": "400d30bb721f399ee35007305ac8b3e39d30c566a1bcf2cae9dcd1d338b2e143"
+  },
+  "id": "S4qqunwkyheYd7LF",
+  "tags": [
+    {
+      "createdAt": "2025-03-23T02:39:55.026Z",
+      "updatedAt": "2025-03-23T02:39:55.026Z",
+      "id": "TzYFKx6n890b9H3I",
+      "name": "MITECHCON"
+    }
+  ]
+}
